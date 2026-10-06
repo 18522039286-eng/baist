@@ -2,35 +2,35 @@
 using namespace std;
 int main()
 {
-    int *p = new int[10] {3,5,1,11,99,66,22,2,8,6};
-    int *pp =new int[12];
-    int a=666;
-    int b=66666;
-    int shift=0;
+    int *sourceArray = new int[10] {3,5,1,11,99,66,22,2,8,6};
+    int *mergedArray =new int[12];
+    int insertValue1=666;
+    int insertValue2=66666;
+    int insertCount=0;
     for (int i=0;i<12;i++)
     {
         if (i==5)
         {
-            pp[i]=a;
-            shift++;
+            mergedArray[i]=insertValue1;
+            insertCount++;
             continue;
         }
         if (i==8)
         {
-            pp[i]=b;
-            shift++;
+            mergedArray[i]=insertValue2;
+            insertCount++;
             continue;
         }
-        pp[i]=p[i-shift];
+        mergedArray[i]=sourceArray[i-insertCount];
     }
-    delete[] p;
-    p=pp;
-    pp=nullptr;
+    delete[] sourceArray;
+    sourceArray=mergedArray;
+    mergedArray=nullptr;
     for (int i=0;i<12;i++)
     {
-        cout << p[i] << "\n";
+        cout << sourceArray[i] << "\n";
     }
-    delete[] p;
+    delete[] sourceArray;
     return 0;
 }
 
